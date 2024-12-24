@@ -19,7 +19,7 @@ def process_excel_file(file_path):
             values = df.iloc[i, 2:2 + len(companies)]
             for company, value in zip(companies, values):
                 if pd.notna(value):
-                    result[company][f"Pass-{cell_value}"] = value
+                    result[company][f"Pass:{cell_value}"] = value
 
     def process_section(start_row, num_rows, prefix):
         for i in range(start_row + 1, start_row + 1 + num_rows):
@@ -79,6 +79,13 @@ def main():
 
     try:
         data, sheet_name = process_excel_file(file_path)
+        # Printing the contents of the dictionary of dictionaries
+        for key, inner_dict in data.items():
+            print(f"{key}:")
+            for inner_key, value in inner_dict.items():
+                print(f"  {inner_key}: {value}")
+            print()  # Add a blank line for better readability
+
         output_csv = f"{sheet_name}.csv"
         export_to_csv(data, output_csv)
         print(f'Data exported to "{Path(output_csv).absolute()}"')

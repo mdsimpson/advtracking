@@ -1,6 +1,7 @@
 import pandas as pd
 import csv
 import os
+from pathlib import Path
 
 def process_excel_file(file_path):
     xl = pd.ExcelFile(file_path)
@@ -70,7 +71,7 @@ def main():
     default_path = "input.xlsx"
 
     # Prompt the user for a file path
-    file_path = input(f"Enter the file path (Press Enter to use default: {default_path}): ").strip()
+    file_path = input(f"Enter the file path (Press Enter to use default: {default_path}): ").strip().strip('"')
 
     # Use the default path if no input is provided
     if not file_path:
@@ -80,7 +81,7 @@ def main():
         data, sheet_name = process_excel_file(file_path)
         output_csv = f"{sheet_name}.csv"
         export_to_csv(data, output_csv)
-        print(f'Data exported to "{output_csv}"')
+        print(f'Data exported to "{Path(output_csv).absolute()}"')
     except Exception as e:
         print(f"Error processing file: {str(e)}")
 

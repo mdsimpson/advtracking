@@ -49,7 +49,7 @@ def export_to_csv(data, output_file):
         ("Unique Card Taps", "Pass:Unique Passes in Use"),
         ("Eligible Employees", "Pass:Contracted"),
         ("Enrolled Employees", "Pass:Activated"),
-        ("Transit Total Trips", "Transit:Total Trips"),
+        ("Total Transit Trips", "Transit:Total Trips"),
         ("Unique Card Taps (Transit)", "Transit:Unique Passes"),
         ("Total Railroad Trips", "Regional Rail:Base Trips"),
         ("Unique Card Taps (Rail)", "Regional Rail:Unique Passes"),
